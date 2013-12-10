@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContactBook.h"
+#import "ContactsTableViewCell.h"
+#import "SendMailViewController.h"
+#import <MessageUI/MessageUI.h>
 
-@interface SecondViewController : UIViewController
+@interface MailTableViewController : UITableViewController
 
 @end

@@ -14,14 +14,20 @@
 		DCAD7B4D18577948003E820D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD7B4C18577948003E820D /* main.m */; };
 		DCAD7B5118577948003E820D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD7B5018577948003E820D /* AppDelegate.m */; };
 		DCAD7B5418577948003E820D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCAD7B5218577948003E820D /* Main.storyboard */; };
-		DCAD7B5718577948003E820D /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD7B5618577948003E820D /* FirstViewController.m */; };
-		DCAD7B5A18577948003E820D /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD7B5918577948003E820D /* SecondViewController.m */; };
+		DCAD7B5718577948003E820D /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD7B5618577948003E820D /* ContactsTableViewController.m */; };
+		DCAD7B5A18577948003E820D /* MailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD7B5918577948003E820D /* MailTableViewController.m */; };
 		DCAD7B5C18577948003E820D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCAD7B5B18577948003E820D /* Images.xcassets */; };
 		DCAD7B6318577948003E820D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAD7B6218577948003E820D /* XCTest.framework */; };
 		DCAD7B6418577948003E820D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAD7B4018577948003E820D /* Foundation.framework */; };
 		DCAD7B6518577948003E820D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAD7B4418577948003E820D /* UIKit.framework */; };
 		DCAD7B6D18577948003E820D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DCAD7B6B18577948003E820D /* InfoPlist.strings */; };
 		DCAD7B6F18577948003E820D /* __Home_ContactsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD7B6E18577948003E820D /* __Home_ContactsTests.m */; };
+		DCAD7B7A18577C94003E820D /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD7B7918577C94003E820D /* Contact.m */; };
+		DCAD7B7D1857802E003E820D /* ContactBook.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD7B7C1857802E003E820D /* ContactBook.m */; };
+		DCAD7B8018578CE8003E820D /* ContactsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD7B7F18578CE8003E820D /* ContactsTableViewCell.m */; };
+		DCAD7B82185790BA003E820D /* defaultImage.png in Resources */ = {isa = PBXBuildFile; fileRef = DCAD7B81185790BA003E820D /* defaultImage.png */; };
+		DCAD7B851857B0E0003E820D /* SendMailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD7B841857B0E0003E820D /* SendMailViewController.m */; };
+		DCAD7B871857B865003E820D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAD7B861857B865003E820D /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,16 +52,26 @@
 		DCAD7B4F18577948003E820D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DCAD7B5018577948003E820D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DCAD7B5318577948003E820D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DCAD7B5518577948003E820D /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		DCAD7B5618577948003E820D /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		DCAD7B5818577948003E820D /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		DCAD7B5918577948003E820D /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		DCAD7B5518577948003E820D /* ContactsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
+		DCAD7B5618577948003E820D /* ContactsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
+		DCAD7B5818577948003E820D /* MailTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MailTableViewController.h; sourceTree = "<group>"; };
+		DCAD7B5918577948003E820D /* MailTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailTableViewController.m; sourceTree = "<group>"; };
 		DCAD7B5B18577948003E820D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DCAD7B6118577948003E820D /* 5-Home-ContactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "5-Home-ContactsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCAD7B6218577948003E820D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		DCAD7B6A18577948003E820D /* 5-Home-ContactsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "5-Home-ContactsTests-Info.plist"; sourceTree = "<group>"; };
 		DCAD7B6C18577948003E820D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DCAD7B6E18577948003E820D /* __Home_ContactsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = __Home_ContactsTests.m; sourceTree = "<group>"; };
+		DCAD7B7818577C94003E820D /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		DCAD7B7918577C94003E820D /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		DCAD7B7B1857802E003E820D /* ContactBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactBook.h; sourceTree = "<group>"; };
+		DCAD7B7C1857802E003E820D /* ContactBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactBook.m; sourceTree = "<group>"; };
+		DCAD7B7E18578CE8003E820D /* ContactsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewCell.h; sourceTree = "<group>"; };
+		DCAD7B7F18578CE8003E820D /* ContactsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewCell.m; sourceTree = "<group>"; };
+		DCAD7B81185790BA003E820D /* defaultImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultImage.png; sourceTree = "<group>"; };
+		DCAD7B831857B0E0003E820D /* SendMailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMailViewController.h; sourceTree = "<group>"; };
+		DCAD7B841857B0E0003E820D /* SendMailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMailViewController.m; sourceTree = "<group>"; };
+		DCAD7B861857B865003E820D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCAD7B871857B865003E820D /* MessageUI.framework in Frameworks */,
 				DCAD7B4318577948003E820D /* CoreGraphics.framework in Frameworks */,
 				DCAD7B4518577948003E820D /* UIKit.framework in Frameworks */,
 				DCAD7B4118577948003E820D /* Foundation.framework in Frameworks */,
@@ -104,6 +121,7 @@
 		DCAD7B3F18577948003E820D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DCAD7B861857B865003E820D /* MessageUI.framework */,
 				DCAD7B4018577948003E820D /* Foundation.framework */,
 				DCAD7B4218577948003E820D /* CoreGraphics.framework */,
 				DCAD7B4418577948003E820D /* UIKit.framework */,
@@ -115,15 +133,24 @@
 		DCAD7B4618577948003E820D /* 5-Home-Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				DCAD7B81185790BA003E820D /* defaultImage.png */,
 				DCAD7B4F18577948003E820D /* AppDelegate.h */,
 				DCAD7B5018577948003E820D /* AppDelegate.m */,
 				DCAD7B5218577948003E820D /* Main.storyboard */,
-				DCAD7B5518577948003E820D /* FirstViewController.h */,
-				DCAD7B5618577948003E820D /* FirstViewController.m */,
-				DCAD7B5818577948003E820D /* SecondViewController.h */,
-				DCAD7B5918577948003E820D /* SecondViewController.m */,
+				DCAD7B5518577948003E820D /* ContactsTableViewController.h */,
+				DCAD7B5618577948003E820D /* ContactsTableViewController.m */,
+				DCAD7B5818577948003E820D /* MailTableViewController.h */,
+				DCAD7B5918577948003E820D /* MailTableViewController.m */,
 				DCAD7B5B18577948003E820D /* Images.xcassets */,
 				DCAD7B4718577948003E820D /* Supporting Files */,
+				DCAD7B7818577C94003E820D /* Contact.h */,
+				DCAD7B7918577C94003E820D /* Contact.m */,
+				DCAD7B7B1857802E003E820D /* ContactBook.h */,
+				DCAD7B7C1857802E003E820D /* ContactBook.m */,
+				DCAD7B7E18578CE8003E820D /* ContactsTableViewCell.h */,
+				DCAD7B7F18578CE8003E820D /* ContactsTableViewCell.m */,
+				DCAD7B831857B0E0003E820D /* SendMailViewController.h */,
+				DCAD7B841857B0E0003E820D /* SendMailViewController.m */,
 			);
 			path = "5-Home-Contacts";
 			sourceTree = "<group>";
@@ -236,6 +263,7 @@
 				DCAD7B5C18577948003E820D /* Images.xcassets in Resources */,
 				DCAD7B4B18577948003E820D /* InfoPlist.strings in Resources */,
 				DCAD7B5418577948003E820D /* Main.storyboard in Resources */,
+				DCAD7B82185790BA003E820D /* defaultImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,10 +282,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCAD7B5A18577948003E820D /* SecondViewController.m in Sources */,
+				DCAD7B5A18577948003E820D /* MailTableViewController.m in Sources */,
 				DCAD7B5118577948003E820D /* AppDelegate.m in Sources */,
-				DCAD7B5718577948003E820D /* FirstViewController.m in Sources */,
+				DCAD7B7A18577C94003E820D /* Contact.m in Sources */,
+				DCAD7B7D1857802E003E820D /* ContactBook.m in Sources */,
+				DCAD7B5718577948003E820D /* ContactsTableViewController.m in Sources */,
 				DCAD7B4D18577948003E820D /* main.m in Sources */,
+				DCAD7B8018578CE8003E820D /* ContactsTableViewCell.m in Sources */,
+				DCAD7B851857B0E0003E820D /* SendMailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
