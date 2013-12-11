@@ -24,7 +24,7 @@
 }
 
 -(id) init {
-    return [self initWithFirstName:@"" lastName:@"" phoneNumbers:[NSMutableArray array] emails:[NSMutableArray array] homeAddress:@"" picture:nil groupId:0];
+    return [self initWithFirstName:@"FirstName" lastName:@"LastName" phoneNumbers:[@[@"0888888888"] mutableCopy] emails:[@[@"email@gmail.com"] mutableCopy] homeAddress:@"HomeAddress" picture:[UIImage imageNamed:@"defaultImage.png"] groupId:2];
 }
 
 @end

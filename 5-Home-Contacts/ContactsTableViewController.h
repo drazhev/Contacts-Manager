@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ContactBook.h"
 #import "ContactsTableViewCell.h"
+#import "ContactDetailsTableViewController.h"
 
 @interface ContactsTableViewController : UITableViewController
 

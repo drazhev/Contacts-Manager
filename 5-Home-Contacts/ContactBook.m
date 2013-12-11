@@ -30,19 +30,18 @@
 
 -(id) init {
     if (self = [super init]) {
-        NSArray* groups = @[@"Family", @"Work", @"Friends"];
+        self.groupsArray = @[@"Family", @"Work", @"Friends"];
         
-        //NSMutableArray *firstGroup, *secondGroup, *thirdGroup;
-        self.contactsDictionary = [[NSMutableDictionary alloc] initWithObjects:@[[NSMutableArray new], [NSMutableArray new], [NSMutableArray new]] forKeys:groups];
+        self.contactsDictionary = [[NSMutableDictionary alloc] initWithObjects:@[[NSMutableArray new], [NSMutableArray new], [NSMutableArray new]] forKeys:self.groupsArray];
         for (int i=0; i<6; i++) {
             NSString* randomFirstName = [self genRandStringLength:7];
             NSString* randomLastName = [self genRandStringLength:8];
             NSString* randomNumber = [NSString stringWithFormat:@"08%u%07u", arc4random() % 3 + 7, arc4random() % 10000000];
             NSString* randomEmail = [NSString stringWithFormat:@"%@@gmail.com", [self genRandStringLength:15]];
             NSString* randomAddress = [self genRandStringLength:15];
-            NSInteger randomGroup = arc4random() % [groups count];
-            Contact* randomContact = [[Contact alloc] initWithFirstName:randomFirstName lastName:randomLastName phoneNumbers:[@[randomNumber] copy] emails:[@[randomEmail] copy] homeAddress:randomAddress picture:[UIImage imageNamed:@"defaultImage.png"] groupId:randomGroup];
-            [[self.contactsDictionary objectForKey:groups[randomGroup]] addObject:randomContact];
+            NSInteger randomGroup = arc4random() % [self.groupsArray count];
+            Contact* randomContact = [[Contact alloc] initWithFirstName:randomFirstName lastName:randomLastName phoneNumbers:[@[randomNumber] mutableCopy] emails:[@[randomEmail, randomEmail] mutableCopy] homeAddress:randomAddress picture:[UIImage imageNamed:@"defaultImage.png"] groupId:randomGroup];
+            [[self.contactsDictionary objectForKey:self.groupsArray[randomGroup]] addObject:randomContact];
         }
 
     }

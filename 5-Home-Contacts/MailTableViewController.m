@@ -17,12 +17,18 @@
 
 @implementation MailTableViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tabBarController.tabBar.translucent = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(updateTableView:) name:@"updateTable" object:nil];
     self.contactsModel = [ContactBook sharedBook];
+    self.tabBarController.tabBar.translucent = NO;
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)updateTableView: (NSNotification*) not {
+    [self.tableView reloadData];
 }
 
 -(void)addButtonTapped: (id)sender {
@@ -62,7 +68,7 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.contactsModel.contactsDictionary allKeys][section];
+    return self.contactsModel.groupsArray[section];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -73,6 +79,14 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", currentContact.firstName, currentContact.lastName];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
+}
+
+-(void)dealloc {
+    // I know while using ARC, dealloc is not needed
+    // but removing an observer is mandatory still
+    // and this is the best method to do so
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    // no need to call [super dealloc] though, because ARC does it
 }
 
 @end

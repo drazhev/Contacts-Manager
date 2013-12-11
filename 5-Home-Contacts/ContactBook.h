@@ -12,6 +12,7 @@
 @interface ContactBook : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary* contactsDictionary;
+@property (nonatomic, strong) NSArray* groupsArray;
 
 
 +(id)sharedBook;

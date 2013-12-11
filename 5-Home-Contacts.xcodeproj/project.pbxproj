@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DCAD32B41858C4B000C8C01A /* ContactDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD32B31858C4B000C8C01A /* ContactDetailsTableViewController.m */; };
+		DCAD32B71858C6CE00C8C01A /* ContactTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD32B61858C6CE00C8C01A /* ContactTextTableViewCell.m */; };
+		DCAD32BA1858C6DD00C8C01A /* ContactGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD32B91858C6DD00C8C01A /* ContactGroupTableViewCell.m */; };
+		DCAD32BD1858C6FC00C8C01A /* ContactImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAD32BC1858C6FC00C8C01A /* ContactImageTableViewCell.m */; };
 		DCAD7B4118577948003E820D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAD7B4018577948003E820D /* Foundation.framework */; };
 		DCAD7B4318577948003E820D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAD7B4218577948003E820D /* CoreGraphics.framework */; };
 		DCAD7B4518577948003E820D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAD7B4418577948003E820D /* UIKit.framework */; };
@@ -41,6 +45,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DCAD32B21858C4B000C8C01A /* ContactDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetailsTableViewController.h; sourceTree = "<group>"; };
+		DCAD32B31858C4B000C8C01A /* ContactDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetailsTableViewController.m; sourceTree = "<group>"; };
+		DCAD32B51858C6CE00C8C01A /* ContactTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTextTableViewCell.h; sourceTree = "<group>"; };
+		DCAD32B61858C6CE00C8C01A /* ContactTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTextTableViewCell.m; sourceTree = "<group>"; };
+		DCAD32B81858C6DD00C8C01A /* ContactGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactGroupTableViewCell.h; sourceTree = "<group>"; };
+		DCAD32B91858C6DD00C8C01A /* ContactGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactGroupTableViewCell.m; sourceTree = "<group>"; };
+		DCAD32BB1858C6FC00C8C01A /* ContactImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactImageTableViewCell.h; sourceTree = "<group>"; };
+		DCAD32BC1858C6FC00C8C01A /* ContactImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactImageTableViewCell.m; sourceTree = "<group>"; };
 		DCAD7B3D18577948003E820D /* 5-Home-Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "5-Home-Contacts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCAD7B4018577948003E820D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DCAD7B4218577948003E820D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -151,6 +163,14 @@
 				DCAD7B7F18578CE8003E820D /* ContactsTableViewCell.m */,
 				DCAD7B831857B0E0003E820D /* SendMailViewController.h */,
 				DCAD7B841857B0E0003E820D /* SendMailViewController.m */,
+				DCAD32B21858C4B000C8C01A /* ContactDetailsTableViewController.h */,
+				DCAD32B31858C4B000C8C01A /* ContactDetailsTableViewController.m */,
+				DCAD32B51858C6CE00C8C01A /* ContactTextTableViewCell.h */,
+				DCAD32B61858C6CE00C8C01A /* ContactTextTableViewCell.m */,
+				DCAD32B81858C6DD00C8C01A /* ContactGroupTableViewCell.h */,
+				DCAD32B91858C6DD00C8C01A /* ContactGroupTableViewCell.m */,
+				DCAD32BB1858C6FC00C8C01A /* ContactImageTableViewCell.h */,
+				DCAD32BC1858C6FC00C8C01A /* ContactImageTableViewCell.m */,
 			);
 			path = "5-Home-Contacts";
 			sourceTree = "<group>";
@@ -282,14 +302,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCAD32BD1858C6FC00C8C01A /* ContactImageTableViewCell.m in Sources */,
 				DCAD7B5A18577948003E820D /* MailTableViewController.m in Sources */,
 				DCAD7B5118577948003E820D /* AppDelegate.m in Sources */,
 				DCAD7B7A18577C94003E820D /* Contact.m in Sources */,
+				DCAD32BA1858C6DD00C8C01A /* ContactGroupTableViewCell.m in Sources */,
 				DCAD7B7D1857802E003E820D /* ContactBook.m in Sources */,
+				DCAD32B41858C4B000C8C01A /* ContactDetailsTableViewController.m in Sources */,
 				DCAD7B5718577948003E820D /* ContactsTableViewController.m in Sources */,
 				DCAD7B4D18577948003E820D /* main.m in Sources */,
 				DCAD7B8018578CE8003E820D /* ContactsTableViewCell.m in Sources */,
 				DCAD7B851857B0E0003E820D /* SendMailViewController.m in Sources */,
+				DCAD32B71858C6CE00C8C01A /* ContactTextTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +522,7 @@
 				DCAD7B7418577948003E820D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DCAD7B7518577948003E820D /* Build configuration list for PBXNativeTarget "5-Home-ContactsTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +531,7 @@
 				DCAD7B7718577948003E820D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -11,6 +11,7 @@
 @interface ContactsTableViewController ()
 
 @property (nonatomic, strong) ContactBook* contactsModel;
+@property (nonatomic, strong) NSIndexPath* selectedIndexPath;
 
 @end
 
@@ -19,6 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(updateTableView:) name:@"updateTable" object:nil];
     self.title = @"All contacts";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonTapped:)];
@@ -27,9 +29,33 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)updateTableView: (NSNotification*) not {
+    [self.tableView reloadData];
+}
+
 -(void)addButtonTapped: (id)sender {
     [self performSegueWithIdentifier:@"newContactSegue" sender:self];
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedIndexPath = indexPath;
+    [self performSegueWithIdentifier:@"detailsContactSegue" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"detailsContactSegue"]) {
+        NSString* currentGroup = [self.contactsModel.contactsDictionary allKeys][self.selectedIndexPath.section];
+        Contact* currentContact = [self.contactsModel.contactsDictionary objectForKey:currentGroup][self.selectedIndexPath.row];
+        ContactDetailsTableViewController* destVC = segue.destinationViewController;
+        destVC.currentContact = currentContact;
+        destVC.currentState = controllerDetailsViewState;
+    }
+    if ([segue.identifier isEqualToString:@"newContactSegue"]) {
+        ContactDetailsTableViewController* destVC = segue.destinationViewController;
+        destVC.currentState = controllerCreateViewState;
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -48,7 +74,7 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.contactsModel.contactsDictionary allKeys][section];
+    return self.contactsModel.groupsArray[section];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -67,6 +93,18 @@
     return YES;
 }
 
+
+// hides the header for empty sections
+// uncomment it if you want it to work the other way
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    if ([tableView.dataSource tableView:tableView numberOfRowsInSection:section] == 0) {
+//        return 0;
+//    } else {
+//        return 40;
+//    }
+//}
+
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewCellEditingStyleDelete;
 }
@@ -74,6 +112,12 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.contactsModel deleteContactWithGroupId:indexPath.section andContactId:indexPath.row];
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    // add notification for table update so the other table view is updated accordingly
+    NSNotification* notification = [NSNotification notificationWithName:@"updateTable" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    
+    [self.tableView reloadData];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -86,6 +130,19 @@
     [[self.contactsModel.contactsDictionary objectForKey:movedContactGroup] removeObjectAtIndex:sourceIndexPath.row];
     NSString* destinationContactGroup = [self.contactsModel.contactsDictionary allKeys][destinationIndexPath.section];
     [[self.contactsModel.contactsDictionary objectForKey:destinationContactGroup] insertObject:movedContact atIndex:destinationIndexPath.row];
+    movedContact.groupId = [self.contactsModel.groupsArray indexOfObject:destinationContactGroup];
+    
+    // add notification for table update so the other table view is updated accordingly
+    NSNotification* notification = [NSNotification notificationWithName:@"updateTable" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+}
+
+-(void)dealloc {
+    // I know while using ARC, dealloc is not needed
+    // but removing an observer is mandatory still
+    // and this is the best method to do so
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    // no need to call [super dealloc] though, because ARC does it
 }
 
 @end
