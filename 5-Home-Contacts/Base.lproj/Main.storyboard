@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="132" y="180"/>
         </scene>
-        <!--Mail Table View Controller-->
+        <!--Mail Table View Controller - Mail-->
         <scene sceneID="waI-8C-GzR">
             <objects>
                 <tableViewController id="bGg-G0-wi4" customClass="MailTableViewController" sceneMemberID="viewController">
@@ -56,7 +56,7 @@
                             <outlet property="delegate" destination="bGg-G0-wi4" id="elM-Ze-fel"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="oiP-Cz-a13"/>
+                    <navigationItem key="navigationItem" title="Mail" id="oiP-Cz-a13"/>
                     <connections>
                         <segue destination="BtZ-EK-cqD" kind="push" identifier="emailSegue" id="DMj-nm-J1X"/>
                     </connections>
@@ -273,7 +273,7 @@
         <scene sceneID="NBV-7p-vYG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YRo-vs-f0A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="All contacts" image="first" id="fr3-hC-yEs"/>
+                    <tabBarItem key="tabBarItem" title="All contacts" image="contacts" id="fr3-hC-yEs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EGa-4X-ycN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -292,7 +292,7 @@
         <scene sceneID="Qky-jm-47j">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NLs-gy-Zlk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mail" image="second" id="SbO-Qh-YN0"/>
+                    <tabBarItem key="tabBarItem" title="Mail" image="Mail" id="SbO-Qh-YN0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lYu-jX-we2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -309,8 +309,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="Mail" width="30" height="30"/>
+        <image name="contacts" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

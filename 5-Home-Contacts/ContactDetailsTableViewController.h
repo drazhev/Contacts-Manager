@@ -18,7 +18,7 @@ typedef enum controllerViewState {
     controllerCreateViewState
     } controllerViewState;
 
-@interface ContactDetailsTableViewController : UITableViewController <UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ContactDetailsTableViewController : UITableViewController <UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (nonatomic) controllerViewState currentState;
 @property (nonatomic, strong) Contact* currentContact;

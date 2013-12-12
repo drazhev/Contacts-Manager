@@ -11,6 +11,7 @@
 @interface ContactDetailsTableViewController ()
 
 @property (nonatomic, strong) ContactBook* contactsModel;
+@property (nonatomic) BOOL isEditing;
 
 @end
 
@@ -33,8 +34,10 @@
 {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(updateTableView:) name:@"updateTable" object:nil];
-    
+
     self.contactsModel = [ContactBook sharedBook];
+    
+    self.isEditing = NO;
     
     
     if (self.currentState == controllerCreateViewState) {
@@ -51,26 +54,18 @@
     }
 }
 
+
 -(void)addButtonTapped: (id)sender {
-//    self.currentContact.firstName = ((ContactTextTableViewCell*)[self.view viewWithTag:0]).mainTextLabel.text;
-//    self.currentContact.lastName = ((ContactTextTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]]).mainTextLabel.text;
-//    self.currentContact.homeAddress = ((ContactTextTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]]).mainTextLabel.text;
-//    self.currentContact.picture = ((ContactImageTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]]).imageView.image;
-//    self.currentContact.groupId = [((ContactGroupTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]]).groupPicker selectedRowInComponent:0];
-//    if (((ContactTextTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]]).mainTextLabel.text)
-//    self.currentContact.emails[0] = ((ContactTextTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]]).mainTextLabel.text;
-//    if (((ContactTextTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]]).mainTextLabel.text)
-//    self.currentContact.phoneNumbers[0] = ((ContactTextTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]]).mainTextLabel.text;
     [self.contactsModel addContact:self.currentContact];
-    NSLog(@"%@",self.currentContact.firstName);
     
     // add notification for table update so the other table view is updated accordingly
     NSNotification* notification = [NSNotification notificationWithName:@"updateTable" object:nil];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)textFieldDidChange:(id)sender {
     UITextField* currentField = (UITextField*) sender;
-    NSLog(@"%ld", (long)currentField.tag);
     switch (currentField.tag) {
         case 0:
             self.currentContact.firstName = currentField.text;
@@ -81,12 +76,12 @@
         case 2:
             self.currentContact.homeAddress = currentField.text;
             break;
-        case 5:
-            self.currentContact.emails[0] = currentField.text;
-            break;
-        case 6:
-            self.currentContact.phoneNumbers[0] = currentField.text;
-            break;
+    }
+    if (currentField.tag >= 5) {
+        self.currentContact.emails[currentField.tag - 5] = currentField.text;
+    }
+    if (currentField.tag <= -1) {
+        self.currentContact.phoneNumbers[-currentField.tag - 1] = currentField.text;
     }
 }
 
@@ -161,6 +156,7 @@
             }
             cell.subtitleTextLabel.text = @"First name:";
             cell.mainTextLabel.tag = 0;
+            cell.mainTextLabel.delegate = self;
             return cell;
         }
         else if (indexPath.row == 1) {
@@ -173,7 +169,7 @@
             }
             cell.subtitleTextLabel.text = @"Last name:";
             cell.mainTextLabel.tag = 1;
-
+            cell.mainTextLabel.delegate = self;
             return cell;
         }
         else if (indexPath.row == 2) {
@@ -186,7 +182,7 @@
             }
             cell.subtitleTextLabel.text = @"Address:";
             cell.mainTextLabel.tag = 2;
-
+            cell.mainTextLabel.delegate = self;
             return cell;
 
         }
@@ -218,8 +214,15 @@
         if (self.currentState == controllerDetailsViewState) {
             cell.mainTextLabel.enabled = NO;
         }
+        if (self.isEditing) {
+            cell.mainTextLabel.enabled = YES;
+        }
         cell.subtitleTextLabel.text = [NSString stringWithFormat: @"Email %ld", (long)indexPath.row + 1];
-        cell.mainTextLabel.tag = 5;
+        // this could be implemented in another way
+        // with an array that matches the current tag with the email row
+        cell.mainTextLabel.tag = 5 + indexPath.row;
+        cell.mainTextLabel.delegate = self;
+        cell.mainTextLabel.keyboardType = UIKeyboardTypeEmailAddress;
         return cell;
     }
     
@@ -231,14 +234,17 @@
         if (self.currentState == controllerDetailsViewState) {
             cell.mainTextLabel.enabled = NO;
         }
+        if (self.isEditing) {
+            cell.mainTextLabel.enabled = YES;
+        }
         cell.subtitleTextLabel.text = [NSString stringWithFormat: @"Phone %ld", (long)indexPath.row + 1];
-        cell.mainTextLabel.tag = 6;
-
+        cell.mainTextLabel.tag = -1 - indexPath.row;
+        cell.mainTextLabel.delegate = self;
+        cell.mainTextLabel.keyboardType = UIKeyboardTypePhonePad;
         return cell;
 
     }
     return nil;
-    // Configure the cell...
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -286,10 +292,10 @@
     
     if (editingStyle == UITableViewCellEditingStyleInsert) {
         if (indexPath.section == 1) {
-            [self.currentContact.emails addObject:self.currentContact.emails[indexPath.row]];
+            [self.currentContact.emails addObject:@""];
         }
         if (indexPath.section == 2) {
-            [self.currentContact.phoneNumbers addObject:self.currentContact.phoneNumbers[indexPath.row]];
+            [self.currentContact.phoneNumbers addObject:@""];
         }
         [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 
@@ -301,6 +307,8 @@
     
     [self.tableView reloadData];
 }
+
+
 - (IBAction)choosePictureButtonTapped:(id)sender {
     UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
     imgPicker.delegate = self;
@@ -310,9 +318,32 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)img editingInfo:(NSDictionary *)editInfo {
     self.currentContact.picture = img;
-    NSLog(@"asd");
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.tableView reloadData];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    if (editing) {
+        self.isEditing = YES;
+    }
+    else {
+        self.isEditing = NO;
+    }
+    [self.tableView reloadData];
+}
+
+-(void)dealloc {
+    // I know while using ARC, dealloc is not needed
+    // but removing an observer is mandatory still
+    // and this is the best method to do so
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    // no need to call [super dealloc] though, because ARC does it
 }
 
 
